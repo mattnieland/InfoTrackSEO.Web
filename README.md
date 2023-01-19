@@ -1,5 +1,5 @@
-# react-starter
+# InfoTrackSEO.Web
 
-[![react-starter](https://github.com/mattnieland/react-starter/actions/workflows/default.yml/badge.svg)](https://github.com/mattnieland/react-starter/actions/workflows/default.yml)
+[![infotrackseo-dev](https://github.com/mattnieland/InfoTrackSEO.Web/actions/workflows/infotrackseo-dev.yml/badge.svg)](https://github.com/mattnieland/InfoTrackSEO.Web/actions/workflows/infotrackseo-dev.yml)
 
-https://react-starter-c4625.web.app
+https://infotrackseo.web.app
