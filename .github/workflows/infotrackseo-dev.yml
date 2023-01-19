@@ -27,7 +27,7 @@ jobs:
         run: echo '${{ secrets.DOPPLER_TOKEN }}' | doppler configure set token
 
       - name: Set Doppler Config
-        run: doppler setup --project infotrack --config prod
+        run: doppler setup --project infotrack --config dev
 
       - name: Install Packages
         run: yarn install
