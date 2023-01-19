@@ -14,7 +14,7 @@ import { openSpotlight } from "@mantine/spotlight";
 // Icons
 import { IconSearch, IconSun, IconMoonStars } from "@tabler/icons";
 // Global - Assets - Images
-import imgBanner from "assets/img/logo-banner.svg";
+import imgBanner from "assets/img/logo-banner.png";
 import imgWhite from "assets/img/name-white.png";
 // Global - Components
 // import { LanguagePicker } from "components";

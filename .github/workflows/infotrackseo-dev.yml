@@ -1,13 +1,8 @@
-name: default
+name: infotrackseo-dev
 on:
   push:
     branches:
-      - main
-
-env:
-  SENTRY_ORG: mattnieland
-  SENTRY_PROJECT: react-starter
-  SENTRY_ENVIRONMENT: prod
+      - dev
 
 jobs:
   deploy:
@@ -21,18 +16,6 @@ jobs:
         shell: bash
         run: |            
               echo "::set-output name=sha::${GITHUB_SHA}"  
-
-      - name: Create Sentry release
-        uses: getsentry/action-release@v1
-        env:
-          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-          SENTRY_ORG: ${{ env.SENTRY_ORG }}
-          SENTRY_PROJECT: ${{ env.SENTRY_PROJECT }}
-        with:
-          environment: ${{ env.SENTRY_ENVIRONMENT }}
-          version: ${{ steps.vars.outputs.sha }}
-          ignore_empty: true
-          ignore_missing: true
 
       - name: Install curl & GnuPG
         run: sudo apt-get update && sudo apt-get install -y curl gnupg
@@ -55,7 +38,7 @@ jobs:
       - name: Deploy Firebase Hosting
         uses: w9jds/firebase-action@master
         with:
-          args: deploy --only hosting:react-starter-c4625
+          args: deploy --only hosting:infotrackseo
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
           PROJECT_PATH: ./
