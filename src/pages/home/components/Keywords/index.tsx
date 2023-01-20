@@ -1,8 +1,7 @@
-import { TextInput, TextInputProps, ActionIcon, useMantineTheme } from '@mantine/core';
-import { IconSearch, IconArrowRight, IconArrowLeft } from '@tabler/icons';
+import { TextInput } from '@mantine/core';
+import { IconSearch } from '@tabler/icons';
 
   const Keywords = () => {
-    const theme = useMantineTheme();
   
     return (
       <TextInput
