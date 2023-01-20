@@ -10,7 +10,7 @@ import {
   MantineProvider,  
 } from "@mantine/core";
 // Local - Components
-import { MyFooter, MyHeader } from "./components";
+import { MyHeader } from "./components";
 
 const Layout: React.FC = () => {
   const [opened, setOpened] = useState(false);
@@ -27,37 +27,17 @@ const Layout: React.FC = () => {
         toggleColorScheme={toggleColorScheme}
       >
         <MantineProvider
-          withGlobalStyles
-          withNormalizeCSS
           theme={{
             colorScheme: colorScheme,
             fontFamily: "'Poppins', sans-serif",
             fontFamilyMonospace: "'Space Mono', monospace",
             headings: { fontFamily: "'Poppins', sans-serif" },
           }}
+          withGlobalStyles
+          withNormalizeCSS
         >
           <AppShell
-            navbarOffsetBreakpoint="md"
             asideOffsetBreakpoint="md"
-            // aside={
-            //   <MediaQuery smallerThan="md" styles={{ display: "none" }}>
-            //     <Aside
-            //       px="md"
-            //       hiddenBreakpoint="md"
-            //       width={{ sm: 200, lg: 300 }}
-            //       style={{
-            //         backgroundImage:
-            //           "linear-gradient(238deg, rgb(59 18 141 / 3%) 23%, rgb(1 175 250 / 4%))",
-            //         zIndex: 1,
-            //       }}
-            //     >
-            //       <ScrollArea>
-            //         <MyFeed />
-            //       </ScrollArea>
-            //     </Aside>
-            //   </MediaQuery>
-            // }
-            footer={<MyFooter />}
             header={
               <MyHeader
                 colorScheme={colorScheme}
@@ -67,7 +47,8 @@ const Layout: React.FC = () => {
                   toggleColorScheme();
                 }}
               />
-            }
+            }            
+            navbarOffsetBreakpoint="md"
           >
             <Outlet />
           </AppShell>

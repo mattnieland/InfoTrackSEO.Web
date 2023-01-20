@@ -2,22 +2,18 @@
 import { Link } from "react-router-dom";
 // Mantine
 import {
-  ActionIcon,  
-  Burger,  
+  ActionIcon,    
   Group,
   Header,
   MediaQuery,
   SimpleGrid,
   useMantineTheme,
 } from "@mantine/core";
-import { openSpotlight } from "@mantine/spotlight";
 // Icons
-import { IconSearch, IconSun, IconMoonStars } from "@tabler/icons";
+import { IconSun, IconMoonStars } from "@tabler/icons";
 // Global - Assets - Images
 import imgBanner from "assets/img/logo-banner.png";
 import imgWhite from "assets/img/name-white.png";
-// Global - Components
-// import { LanguagePicker } from "components";
 // Local - TypeScript Types
 import { IMyHeader } from "./types";
 import { User } from "./components";
@@ -47,19 +43,10 @@ const MyHeader: React.FC<IMyHeader> = ({
         <SimpleGrid cols={3}>
           <div style={{ display: "flex", alignItems: "center" }}>
             <Group position="left">
-              <MediaQuery largerThan="md" styles={{ display: "none" }}>
-                <Burger
-                  opened={opened}
-                  onClick={() => setOpened((previous) => !previous)}
-                  size="sm"
-                  color={theme.colors.gray[6]}
-                  mr="xl"
-                />
-              </MediaQuery>
               <MediaQuery smallerThan="sm" styles={{ display: "none" }}>
                 <Link
-                  to="/"
                   style={{ cursor: "pointer", textDecoration: "none" }}
+                  to="/"
                 >
                   <Group position="apart">
                     <img
@@ -69,19 +56,8 @@ const MyHeader: React.FC<IMyHeader> = ({
                           ? imgWhite
                           : imgBanner
                       }
-                      style={{ height: 30 }}
+                      style={{ height: 45 }}
                     />
-                    {/* <Badge
-                      sx={{
-                        border: "1px solid #e8e8e8",
-                        fontWeight: 700,
-                        textDecoration: "none",
-                      }}
-                      color="violet"
-                      variant="light"
-                    >
-                      B2B Supply Chain
-                    </Badge> */}
                   </Group>
                 </Link>
               </MediaQuery>
@@ -89,24 +65,17 @@ const MyHeader: React.FC<IMyHeader> = ({
           </div>
           <div style={{ display: "flex", alignItems: "center" }}>
             <MediaQuery largerThan="sm" styles={{ display: "none" }}>
-              <Group position="apart">
-                <Link
-                  to="/"
-                  onClick={() => {
-                    setOpened(false);
-                  }}
-                >
-                  <img
-                    alt="Logo"
-                    src={
-                      theme.colorScheme === "dark"
-                        ? imgWhite
-                        : imgBanner
-                    }
-                    style={{ height: 35 }}
-                  />
-                </Link>
-              </Group>
+                  <Group position="apart">
+                    <img
+                      alt="Logo"
+                      src={
+                        theme.colorScheme === "dark"
+                          ? imgWhite
+                          : imgBanner
+                      }
+                      style={{ height: 45 }}
+                    />
+                  </Group>
             </MediaQuery>
           </div>
           <div
@@ -117,29 +86,12 @@ const MyHeader: React.FC<IMyHeader> = ({
             }}
           >
             <Group position="right">
-              <MediaQuery smallerThan={"md"} styles={{ display: "none" }}>
-                <div>
-                  {/* <LanguagePicker /> */}
-                </div>
-              </MediaQuery>
-              <MediaQuery largerThan={"sm"} styles={{ display: "none" }}>
-                <ActionIcon
-                  color={theme.colorScheme === "dark" ? "cyan" : "violet"}
-                  variant="outline"
-                  onClick={() => {
-                    openSpotlight();
-                  }}
-                  size={35}
-                >
-                  <IconSearch size={16} />
-                </ActionIcon>
-              </MediaQuery>
               <ActionIcon
-                variant="default"
                 onClick={() => {
                   toggleColorScheme();
                 }}
                 size={35}
+                variant="default"
               >
                 {colorScheme === "dark" ? (
                   <IconSun size={16} />

@@ -6,15 +6,6 @@ import { NavigationProgress } from "@mantine/nprogress";
 // Auth0
 import { Auth0Provider, CacheLocation } from "@auth0/auth0-react";
 import AppRoutes from "routes";
-import { IntlProvider } from "react-intl";
-import {
-  messagesInEnglish,
-  messagesInFrench,
-  messagesInGerman,
-  messagesInItalian,
-  messagesInPolish,
-  messagesInSpanish,
-} from "./translations";
 import { useState } from "react";
 
 const AppBase: React.FC = () => {
@@ -31,48 +22,14 @@ const AppBase: React.FC = () => {
     redirectUri: window.location.origin,
   };
 
-  const languages = {
-    en: messagesInEnglish,
-    fr: messagesInFrench,
-    gr: messagesInGerman,
-    it: messagesInItalian,
-    po: messagesInPolish,
-    sp: messagesInSpanish,
-  };
-
-  const getLanguage = () => {
-    switch (language) {
-      case "en":
-        return languages.en;
-      case "fr":
-        return languages.fr;
-      case "gr":
-        return languages.gr;
-      case "it":
-        return languages.it;
-      case "po":
-        return languages.po;
-      case "sp":
-        return languages.sp;
-      default:
-        return languages.en;
-    }
-  };
-
   return (
     <>
-      <IntlProvider
-        messages={getLanguage()}
-        locale={language}
-        defaultLocale="en"
-      >
-        <Auth0Provider {...providerConfig}>
+      <Auth0Provider {...providerConfig}>
           <AppContext.Provider value={contextValue}>
             <NavigationProgress />
             <AppRoutes />
           </AppContext.Provider>
         </Auth0Provider>
-      </IntlProvider>
     </>
   );
 };

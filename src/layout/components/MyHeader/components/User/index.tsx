@@ -37,7 +37,7 @@ const User: React.FC = () => {
   return (
     <>
       <Box>
-        <Menu classNames={classes} transition="scale" position="top-end" width={200} offset={3} arrowPosition="center" withinPortal withArrow>
+        <Menu arrowPosition="center" classNames={classes} offset={3} position="top-end" transition="scale" width={200} withArrow withinPortal>
           <Menu.Target>
             <UnstyledButton
               sx={{
@@ -50,21 +50,21 @@ const User: React.FC = () => {
               }}
             >
               <Group>
-                <Avatar src={user?.picture || ""} radius="xl" />
+                <Avatar radius="xl" src={user?.picture || ""} />
               </Group>
             </UnstyledButton>
           </Menu.Target>
           <Menu.Dropdown>
             <Menu.Item              
-              onClick={() => {
-                handleLogout();
-              }}
               icon={
                 <IconUsers
                   size={16}                  
                   stroke={1.5}
                 />
               }
+              onClick={() => {
+                handleLogout();
+              }}
             >
               Logout
             </Menu.Item>

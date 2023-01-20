@@ -1,71 +1,54 @@
+import { useState } from "react";
 // Mantine
-// import { Skeleton, Grid, useMantineTheme } from "@mantine/core";
+import { Space, Flex, Group, Grid, Select } from "@mantine/core";
 // Local - Components
-// import { Services, Stats } from "./components";
+import { Keywords, Search, ResultsTable, Stats } from "./components";
 
 const PageHome: React.FC = () => {
-  // const theme = useMantineTheme();
-
+  const [url, setUrl] = useState<string | null>(null);
   // const PRIMARY_COL_HEIGHT = 300;
   // const SECONDARY_COL_HEIGHT = PRIMARY_COL_HEIGHT / 2 - theme.spacing.md / 2;
 
   return (
     <>
-      {/* <Grid columns={3}>
-        <Grid.Col md={2} sm={3}>
-          <Grid>
-            <Grid.Col>
-              <Stats />
-            </Grid.Col>
-          </Grid>
-          <Grid columns={2}>
-            <Grid.Col span={1}>
-              <Skeleton
-                height={PRIMARY_COL_HEIGHT}
-                radius="md"
-                animate={false}
-              />
-            </Grid.Col>
-            <Grid.Col span={1}>
-              <Skeleton
-                height={PRIMARY_COL_HEIGHT}
-                radius="md"
-                animate={false}
-              />
-            </Grid.Col>
-          </Grid>
-          <Grid>
-            <Grid.Col>
-              <Skeleton
-                height={PRIMARY_COL_HEIGHT}
-                radius="md"
-                animate={false}
-              />
-            </Grid.Col>
-          </Grid>
+      <Grid columns={12}>        
+        <Grid.Col md={4}>
+          
         </Grid.Col>
-        <Grid.Col md={1} sm={3}>
+        <Grid.Col md={4}>
+          <Flex>
+            <Keywords />
+            <Space w="sm" />
+            <Search />
+          </Flex>
+        </Grid.Col>
+        <Grid.Col md={4}>
+        <Group position="right">
+          <Select
+            data={[
+              { value: '1', label: 'https://www.infotrack.com' },
+              { value: '2', label: 'https://www.onelegal.com' },
+            ]}
+            label="Tracked Urls"
+            onChange={setUrl}
+            placeholder="Pick one"
+          />
+        </Group>
+        </Grid.Col>
+      </Grid>
+      <br />
+      <Grid columns={12}>
+        <Grid.Col md={1} sm={1}>
+          <Stats url={url} />
+        </Grid.Col>
+        <Grid.Col md={10} sm={1}>
           <Grid>
             <Grid.Col>
-              <Services />
+              <ResultsTable url={url} />
             </Grid.Col>
-            <Grid.Col span={6}>
-              <Skeleton
-                height={SECONDARY_COL_HEIGHT}
-                radius="md"
-                animate={false}
-              />
-            </Grid.Col>
-            <Grid.Col span={6}>
-              <Skeleton
-                height={SECONDARY_COL_HEIGHT}
-                radius="md"
-                animate={false}
-              />
-            </Grid.Col>
-          </Grid>
+          </Grid>                    
         </Grid.Col>
-      </Grid> */}
+      </Grid>
     </>
   );
 };

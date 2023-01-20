@@ -1,18 +1,13 @@
-import { useState } from "react";
-import dayjs from "dayjs";
 import {
-  createStyles,
-  UnstyledButton,
+  createStyles,  
   Text,
   Paper,
-  Group,
+  Stack
 } from "@mantine/core";
 import {
-  IconChevronDown,
-  IconChevronUp,
-  IconReceipt,
-  IconCurrencyDollar,
-  IconArticle,
+  IconTrophy,
+  IconSeo,
+  IconListSearch
 } from "@tabler/icons";
 
 const useStyles = createStyles((theme) => ({
@@ -142,31 +137,30 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const data = [
-  { icon: IconArticle, label: "Orders" },
-  { icon: IconReceipt, label: "Invoices" },
-  { icon: IconCurrencyDollar, label: "Payments" },
+  { icon: IconTrophy, label: "Highest Rank", rank: "1st" },
+  { icon: IconTrophy, label: "Lowest Rank", rank: "3rd" },
+  { icon: IconListSearch, label: "Average Rank", rank: "2nd" },
+  { icon: IconListSearch, label: "Average Results", rank: "2" },
 ];
 
-const Stats: React.FC = () => {
+const Stats = ( url: any) => {
   const { classes } = useStyles();
-  const [date, setDate] = useState(new Date());
 
   const stats = data.map((stat) => (
     <Paper
       className={classes.stat}
+      key={stat.label}
+      p="xs"
       radius="md"
       shadow="md"
-      p="xs"
-      key={stat.label}
     >
-      <stat.icon size={32} className={classes.icon} stroke={1.5} />
+      <stat.icon className={classes.icon} size={32} stroke={1.5} />
       <div>
         <Text className={classes.label}>{stat.label}</Text>
-        <Text size="xs" className={classes.count}>
+        <Text className={classes.count} size="xs">
           <span className={classes.value}>
-            ${Math.floor(Math.random() * 6 + 4)}k
-          </span>{" "}
-          / $10k
+            {stat.rank}
+          </span>
         </Text>
       </div>
     </Paper>
@@ -175,30 +169,8 @@ const Stats: React.FC = () => {
   return (
     <div className={classes.root}>
       <div className={classes.controls}>
-        <UnstyledButton
-          className={classes.control}
-          onClick={() =>
-            setDate((current) => dayjs(current).add(1, "day").toDate())
-          }
-        >
-          <IconChevronUp className={classes.controlIcon} stroke={1.5} />
-        </UnstyledButton>
-
-        <div className={classes.date}>
-          <Text className={classes.day}>{dayjs(date).format("DD")}</Text>
-          <Text className={classes.month}>{dayjs(date).format("MMMM")}</Text>
-        </div>
-
-        <UnstyledButton
-          className={classes.control}
-          onClick={() =>
-            setDate((current) => dayjs(current).subtract(1, "day").toDate())
-          }
-        >
-          <IconChevronDown className={classes.controlIcon} stroke={1.5} />
-        </UnstyledButton>
-      </div>
-      <Group sx={{ flex: 1 }}>{stats}</Group>
+        <Stack sx={{ flex: 1 }}>{stats}</Stack>
+      </div>      
     </div>
   );
 };

@@ -40,7 +40,7 @@ const PageAuthLogin: React.FC = () => {
   };
 
   return (
-    <Container size={460} my={300}>
+    <Container my={300} size={460}>
       <Title
         align="center"
         sx={(theme) => ({
@@ -50,8 +50,8 @@ const PageAuthLogin: React.FC = () => {
       >
         Log out successful!
       </Title>
-      <Paper withBorder shadow="md" p={30} radius="md" mt="xl">
-        <Group position="apart" className={classes.controls}>
+      <Paper mt="xl" p={30} radius="md" shadow="md" withBorder>
+        <Group className={classes.controls} position="apart">
           <Button
             fullWidth            
             onClick={() => {

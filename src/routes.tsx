@@ -18,15 +18,15 @@ const AppRoutes: React.FC = () => {
         {isAuthenticated ? (
           <>
             <Route element={<Layout />}>
-              <Route index element={<PageHome />} />                          
-              <Route path="*" element={<Page404 />} />
+              <Route element={<PageHome />} index />                          
+              <Route element={<Page404 />} path="*" />
             </Route>
           </>
        ) : (
           <>            
-            <Route path="/auth/login" element={<PageAuthLogin />} />
-            <Route path="/auth/logout" element={<PageAuthLogout />} />                       
-            <Route path="*" element={<PageAuthLogin />} />
+            <Route element={<PageAuthLogin />} path="/auth/login" />
+            <Route element={<PageAuthLogout />} path="/auth/logout" />                       
+            <Route element={<PageAuthLogin />} path="*" />
           </>
         )}
       </Routes>
