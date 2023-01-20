@@ -6,7 +6,6 @@ import {
 } from "@mantine/core";
 import {
   IconTrophy,
-  IconSeo,
   IconListSearch
 } from "@tabler/icons";
 
